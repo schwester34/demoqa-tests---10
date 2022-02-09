@@ -1,4 +1,4 @@
-package junit;
+package tests;
 
 
 import com.codeborne.selenide.Selenide;
@@ -7,10 +7,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Selenide.open;
+
 public class FirstJUnitTest {
     @BeforeEach
     void openBrowser(){
-        Selenide.open( relativeOrAbsoluteUrl:"https://ya.ru");
+        Selenide.open("https://ya.ru");
     }
 
     @AfterEach

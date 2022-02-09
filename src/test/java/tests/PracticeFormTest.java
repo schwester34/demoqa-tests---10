@@ -54,16 +54,16 @@ public class PracticeFormTest {
 
         $("#example-modal-sizes-title-lg").shouldHave((textCaseSensitive("Thanks for submitting the form")));
         $(".table-responsive").shouldHave(
-                textCaseSensitive("Student Name"),    textCaseSensitive("Marina Romanova"),
-                textCaseSensitive("Student Email"),   textCaseSensitive("mari@rom.eu"),
-                textCaseSensitive("Gender"),          textCaseSensitive("Female"),
-                textCaseSensitive("Mobile"),          textCaseSensitive("1234567899"),
-                textCaseSensitive("Date of Birth"),   textCaseSensitive("09 February,1999"),
-                textCaseSensitive("Subjects"),        textCaseSensitive("Arts, Civics"),
-                textCaseSensitive("Hobbies"),         textCaseSensitive("Reading, Music"),
-                textCaseSensitive("Picture"),         textCaseSensitive("picture.jpg"),
-                textCaseSensitive("Address"),         textCaseSensitive("Moscow"),
-                textCaseSensitive("State and City"),  textCaseSensitive("Haryana Panipat")
+                textCaseSensitive("Student Name"), textCaseSensitive("Marina Romanova"),
+                textCaseSensitive("Student Email"), textCaseSensitive("mari@rom.eu"),
+                textCaseSensitive("Gender"), textCaseSensitive("Female"),
+                textCaseSensitive("Mobile"), textCaseSensitive("1234567899"),
+                textCaseSensitive("Date of Birth"), textCaseSensitive("09 February,1999"),
+                textCaseSensitive("Subjects"), textCaseSensitive("Arts, Civics"),
+                textCaseSensitive("Hobbies"), textCaseSensitive("Reading, Music"),
+                textCaseSensitive("Picture"), textCaseSensitive("picture.jpg"),
+                textCaseSensitive("Address"), textCaseSensitive("Moscow"),
+                textCaseSensitive("State and City"), textCaseSensitive("Haryana Panipat")
         );
 
         $("#closeLargeModal").click();

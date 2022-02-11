@@ -33,7 +33,7 @@ public class PracticeFormTest {
         //$("#dateOfBirthInput").clear();
 
         $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOptionByValue("2");
+        $(".react-datepicker__month-select").selectOptionByValue("1");
         $(".react-datepicker__year-select").selectOptionByValue("1999");
         $(".react-datepicker__day--007").click();
 
@@ -44,7 +44,7 @@ public class PracticeFormTest {
 
         executeJavaScript("arguments[0].click()", $(By.id("hobbies-checkbox-2")));
         executeJavaScript("arguments[0].click()", $(By.id("hobbies-checkbox-3")));
-        $("#uploadPicture").uploadFile(new File("src/test/resources/picture.jpg"));
+        $("#uploadPicture").uploadFile(new File("src/test/resources/hdr009.jpg"));
 
         $("#currentAddress").setValue("Moscow");
 
@@ -61,7 +61,7 @@ public class PracticeFormTest {
                 textCaseSensitive("Date of Birth"), textCaseSensitive("09 February,1999"),
                 textCaseSensitive("Subjects"), textCaseSensitive("Arts, Civics"),
                 textCaseSensitive("Hobbies"), textCaseSensitive("Reading, Music"),
-                textCaseSensitive("Picture"), textCaseSensitive("picture.jpg"),
+                textCaseSensitive("Picture"), textCaseSensitive("hdr009.jpg"),
                 textCaseSensitive("Address"), textCaseSensitive("Moscow"),
                 textCaseSensitive("State and City"), textCaseSensitive("Haryana Panipat")
         );

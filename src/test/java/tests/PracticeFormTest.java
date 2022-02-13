@@ -35,7 +35,7 @@ public class PracticeFormTest {
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOptionByValue("1");
         $(".react-datepicker__year-select").selectOptionByValue("1999");
-        $(".react-datepicker__day--007").click();
+        $(".react-datepicker__day--009").click();
 
 
         $("#subjectsInput").setValue("Arts").pressEnter();

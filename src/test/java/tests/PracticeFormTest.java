@@ -3,69 +3,64 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-
-import java.io.File;
-
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.*;
+import pages.RegistrationPage;
 
 public class PracticeFormTest {
+
+    RegistrationPage registrationPage = new RegistrationPage();
+
     @BeforeAll
     static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
     }
 
-
     @Test
-    void successFillTest() throws InterruptedException {
-        open("/automation-practice-form");
-        $(".main-header").shouldHave(text("Practice Form"));
+    void successFillTest() {
+        String firstName = "Marina";
+        String lastName = "Romanova";
+        String email = "mari@rom.eu";
+        String gender = "Female";
+        String phoneNumber = "1234567899";
+        String day = "19";
+        String month = "February";
+        String year = "1999";
+        String subject = "Maths";
+        String hobby_1 = "Civics";
+        String hobby_2 = "Music";
+        String fileName = "hdr009.jpg";
+        String address = "Moscow";
+        String state = "Haryana";
+        String city = "Panipat";
 
-        $("#firstName").setValue("Marina");
-        $("#lastName").setValue("Romanova");
-        $("#userEmail").setValue("mari@rom.eu");
+        registrationPage.openPage();
 
-        executeJavaScript("arguments[0].click()", $(By.id("gender-radio-2")));
+        registrationPage.setFirstName(firstName)
+                .setLastName(lastName)
+                .setEmail(email)
+                .setGender(gender)
+                .setMobileNumber(phoneNumber)
+                .setBirthDate(day, month, year)
+                .selectSubject(subject)
+                .selectHobbies(hobby_1, hobby_2)
+                .uploadImage(fileName)
+                .setCurrentAddress(address)
+                .selectState(state)
+                .selectCity(city)
+                .submitForm();
 
-        $("#userNumber").setValue("1234567899");
-        //$("#dateOfBirthInput").clear();
+        registrationPage.verifyForm("Student Name", firstName + " " + lastName)
+                .verifyForm("Student Email", email)
+                .verifyForm("Gender", gender)
+                .verifyForm("Mobile", phoneNumber)
+                .verifyForm("Date of Birth", day + " " + month + "," + year)
+                .verifyForm("Subjects", subject)
+                .verifyForm("Hobbies", hobby_1 + ", " + hobby_2)
+                .verifyForm("Picture", fileName)
+                .verifyForm("Address", address)
+                .verifyForm("State and City", state + " " + city);
+        }
 
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOptionByValue("1");
-        $(".react-datepicker__year-select").selectOptionByValue("1999");
-        $(".react-datepicker__day--007").click();
 
-
-        $("#subjectsInput").setValue("Arts").pressEnter();
-        $("#subjectsInput").setValue("Civics").pressEnter();
-
-
-        executeJavaScript("arguments[0].click()", $(By.id("hobbies-checkbox-2")));
-        executeJavaScript("arguments[0].click()", $(By.id("hobbies-checkbox-3")));
-        $("#uploadPicture").uploadFile(new File("src/test/resources/hdr009.jpg"));
-
-        $("#currentAddress").setValue("Moscow");
-
-        $("#react-select-3-input").setValue("Haryana").pressEnter();
-        $("#react-select-4-input").setValue("Panipat").pressEnter();
-        $("#submit").click();
-
-        $("#example-modal-sizes-title-lg").shouldHave((textCaseSensitive("Thanks for submitting the form")));
-        $(".table-responsive").shouldHave(
-                textCaseSensitive("Student Name"), textCaseSensitive("Marina Romanova"),
-                textCaseSensitive("Student Email"), textCaseSensitive("mari@rom.eu"),
-                textCaseSensitive("Gender"), textCaseSensitive("Female"),
-                textCaseSensitive("Mobile"), textCaseSensitive("1234567899"),
-                textCaseSensitive("Date of Birth"), textCaseSensitive("09 February,1999"),
-                textCaseSensitive("Subjects"), textCaseSensitive("Arts, Civics"),
-                textCaseSensitive("Hobbies"), textCaseSensitive("Reading, Music"),
-                textCaseSensitive("Picture"), textCaseSensitive("hdr009.jpg"),
-                textCaseSensitive("Address"), textCaseSensitive("Moscow"),
-                textCaseSensitive("State and City"), textCaseSensitive("Haryana Panipat")
-        );
-
-        $("#closeLargeModal").click();
     }
-}
+

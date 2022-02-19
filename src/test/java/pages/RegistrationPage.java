@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class RegistrationPage {
-    private CalendarComponent calendarComponent = new CalendarComponent();
+    private final CalendarComponent calendarComponent = new CalendarComponent();
 
     private final SelenideElement
             pageHeader = $(".main-header");
@@ -27,11 +27,10 @@ public class RegistrationPage {
     private final SelenideElement submitButton = $("#submit");
     private final SelenideElement filledFormModal = $(".modal-content");
 
-    public RegistrationPage openPage() {
+    public void openPage() {
         open("/automation-practice-form");
         pageHeader.shouldHave(text("Practice Form"));
 
-        return this;
     }
 
     public RegistrationPage setFirstName(String firstName) {
@@ -111,10 +110,9 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage submitForm() {
+    public void submitForm() {
         submitButton.click();
 
-        return this;
     }
 
     public RegistrationPage verifyForm(String label, String value) {

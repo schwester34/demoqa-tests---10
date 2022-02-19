@@ -26,7 +26,7 @@ public class PracticeFormTest {
         String month = "February";
         String year = "1999";
         String subject = "Maths";
-        String hobby_1 = "Civics";
+        String hobby_1 = "Sports";
         String hobby_2 = "Music";
         String fileName = "hdr009.jpg";
         String address = "Moscow";
@@ -60,7 +60,6 @@ public class PracticeFormTest {
                 .verifyForm("Address", address)
                 .verifyForm("State and City", state + " " + city);
         }
-
 
     }
 

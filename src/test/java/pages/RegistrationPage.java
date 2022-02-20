@@ -11,8 +11,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class RegistrationPage {
     private final CalendarComponent calendarComponent = new CalendarComponent();
-    private final SelenideElement
-            pageHeader = $(".main-header");
+    private final SelenideElement pageHeader = $(".main-header");
     private final SelenideElement firstNameInput = $("#firstName");
     private final SelenideElement lastNameInput = $("#lastName");
     private final SelenideElement emailInput = $("#userEmail");

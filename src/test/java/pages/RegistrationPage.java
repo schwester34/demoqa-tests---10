@@ -82,6 +82,7 @@ public class RegistrationPage {
         $(byText(city)).click();
         return this;
     }
+
     public void submitForm() {
         submitButton.click();
     }

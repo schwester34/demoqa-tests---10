@@ -88,7 +88,7 @@ public class RegistrationPage {
     }
     public RegistrationPage verifyForm(String label, String value) {
         filledFormModal.shouldBe(visible);
-        filledFormModal.$(byText(label)).parent().shouldHave(text(value));
+        filledFormModal.$(byText(label)).sibling(0).shouldHave(text(value));
         return this;
     }
 }

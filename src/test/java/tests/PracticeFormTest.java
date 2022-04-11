@@ -19,7 +19,7 @@ public class PracticeFormTest {
 
 
     @Test
-    void successFillTest() throws InterruptedException {
+    void successFillTest() {
         open("/automation-practice-form");
         $(".main-header").shouldHave(text("Practice Form"));
 
@@ -41,9 +41,9 @@ public class PracticeFormTest {
         $("#subjectsInput").setValue("Arts").pressEnter();
         $("#subjectsInput").setValue("Civics").pressEnter();
 
-
-        executeJavaScript("arguments[0].click()", $(By.id("hobbies-checkbox-2")));
-        executeJavaScript("arguments[0].click()", $(By.id("hobbies-checkbox-3")));
+        $(byText("Reading")).click();
+        //executeJavaScript("arguments[0].click()", $(By.id("hobbies-checkbox-2")));
+        //executeJavaScript("arguments[0].click()", $(By.id("hobbies-checkbox-3")));
         $("#uploadPicture").uploadFile(new File("src/test/resources/hdr009.jpg"));
 
         $("#currentAddress").setValue("Moscow");

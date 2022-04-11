@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import java.io.File;
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeFormTest {
@@ -60,7 +61,7 @@ public class PracticeFormTest {
                 textCaseSensitive("Mobile"), textCaseSensitive("1234567899"),
                 textCaseSensitive("Date of Birth"), textCaseSensitive("09 February,1999"),
                 textCaseSensitive("Subjects"), textCaseSensitive("Arts, Civics"),
-                textCaseSensitive("Hobbies"), textCaseSensitive("Reading, Music"),
+                textCaseSensitive("Hobbies"), textCaseSensitive("Reading"),
                 textCaseSensitive("Picture"), textCaseSensitive("hdr009.jpg"),
                 textCaseSensitive("Address"), textCaseSensitive("Moscow"),
                 textCaseSensitive("State and City"), textCaseSensitive("Haryana Panipat")

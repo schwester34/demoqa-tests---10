@@ -35,12 +35,8 @@ public class code {
         System.out.println("c>=b =" + (c>=b));
         System.out.println("t || f=" + (t || f));
         System.out.println("t && f=" + (t && f));
-        System.out.println("byte type overflow" + (e+1) + "" + (e-200) );
+        System.out.println("byte type overflow" + (e+1) + "" + (e-200));
         System.out.println(ch+ln);
         System.out.println(aString);
-
-
-
-
     }
 }

@@ -20,7 +20,7 @@ public class PracticeFormTest extends TestBase{
         String lastName = "Surname";
         String userEmail = "mail@mail.ru";
         String gender = "Female";
-        String userNumber = "1112223334";
+        String userNumber = "123456";
         String year = "1999";
         String month = "February";
         String day = "12";

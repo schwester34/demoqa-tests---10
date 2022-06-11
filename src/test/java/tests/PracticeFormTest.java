@@ -12,12 +12,6 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeFormTest extends TestBase {
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
-    }
-
 
     @Test
     void successFillTest() {
@@ -31,7 +25,7 @@ public class PracticeFormTest extends TestBase {
         executeJavaScript("arguments[0].click()", $(By.id("gender-radio-2")));
 
         $("#userNumber").setValue("1234567899");
-        //$("#dateOfBirthInput").clear();
+
 
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOptionByValue("1");

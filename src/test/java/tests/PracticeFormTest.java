@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class PracticeFormTest {
+public class PracticeFormTest  extends TestBase {
     @BeforeAll
     static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com";
@@ -43,8 +43,7 @@ public class PracticeFormTest {
         $("#subjectsInput").setValue("Civics").pressEnter();
 
         $(byText("Reading")).click();
-        //executeJavaScript("arguments[0].click()", $(By.id("hobbies-checkbox-2")));
-        //executeJavaScript("arguments[0].click()", $(By.id("hobbies-checkbox-3")));
+
         $("#uploadPicture").uploadFile(new File("src/test/resources/hdr009.jpg"));
 
         $("#currentAddress").setValue("Moscow");

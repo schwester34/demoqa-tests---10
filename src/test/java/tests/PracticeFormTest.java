@@ -1,64 +1,82 @@
 package tests;
 
 
+
+import com.codeborne.selenide.Selenide;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 
-import java.io.File;
-
-import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static io.qameta.allure.Allure.step;
 
-public class PracticeFormTest extends TestBase {
-
+public class PracticeFormTest extends TestBase{
     @Test
-    void successFillTest() {
-        open("/automation-practice-form");
-        $(".main-header").shouldHave(text("Practice Form"));
+    @DisplayName("Successful fill registration test")
+    void fillFormTest(){
 
-        $("#firstName").setValue("Marina");
-        $("#lastName").setValue("Romanova");
-        $("#userEmail").setValue("mari@rom.eu");
+        String firstName = "Name";
+        String lastName = "Surname";
+        String userEmail = "mail@mail.ru";
+        String gender = "Female";
+        String userNumber = "1112223334";
+        String year = "1999";
+        String month = "February";
+        String day = "12";
+        String subject = "English";
+        String hobby = "Music";
+        String address = "Country, City, Street 5";
+        String state = "NCR";
+        String city = "Delhi";
 
-        executeJavaScript("arguments[0].click()", $(By.id("gender-radio-2")));
+        step("Open registration form", () -> {
+            open("/automation-practice-form");
 
-        $("#userNumber").setValue("1234567899");
+            Selenide.executeJavaScript("document.getElementById('fixedban').hidden = 'true'");
+            executeJavaScript("$('footer').remove()");
+        });
+
+        step("Fill registration form", () -> {
+            $("#firstName").setValue(firstName);
+            $("#lastName").setValue(lastName);
+            $("#userEmail").setValue(userEmail);
+            $("#genterWrapper").$(byText(gender)).click();
+            $("#userNumber").setValue(userNumber);
 
 
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOptionByValue("1");
-        $(".react-datepicker__year-select").selectOptionByValue("1999");
-        $(".react-datepicker__day--009").click();
+            $("#dateOfBirthInput").click();
+            $(" .react-datepicker__year-select").selectOption(year);
+            $(" .react-datepicker__month-select").selectOption(month);
+            $(byText(day)).click();
 
+            $("#subjectsInput").setValue(subject).pressEnter();
+            $("#hobbiesWrapper").$(byText(hobby)).click();
+            $("#uploadPicture").uploadFromClasspath("hdr009.jpg");
 
-        $("#subjectsInput").setValue("Arts").pressEnter();
-        $("#subjectsInput").setValue("Civics").pressEnter();
+            $("#currentAddress").setValue(address);
+            $("#state").click();
+            $(byText(state)).click();
+            $("#city").click();
+            $(byText(city)).click();
+            $("#submit").click();
+        });
 
-        $(byText("Reading")).click();
-
-        $("#uploadPicture").uploadFile(new File("src/test/resources/hdr009.jpg"));
-
-        $("#currentAddress").setValue("Moscow");
-
-        $("#react-select-3-input").setValue("Haryana").pressEnter();
-        $("#react-select-4-input").setValue("Panipat").pressEnter();
-        $("#submit").click();
-
-        $("#example-modal-sizes-title-lg").shouldHave((textCaseSensitive("Thanks for submitting the form")));
-        $(".table-responsive").shouldHave(
-                textCaseSensitive("Student Name"), textCaseSensitive("Marina Romanova"),
-                textCaseSensitive("Student Email"), textCaseSensitive("mari@rom.eu"),
-                textCaseSensitive("Gender"), textCaseSensitive("Female"),
-                textCaseSensitive("Mobile"), textCaseSensitive("1234567899"),
-                textCaseSensitive("Date of Birth"), textCaseSensitive("09 February,1999"),
-                textCaseSensitive("Subjects"), textCaseSensitive("Arts, Civics"),
-                textCaseSensitive("Hobbies"), textCaseSensitive("Reading"),
-                textCaseSensitive("Picture"), textCaseSensitive("hdr009.jpg"),
-                textCaseSensitive("Address"), textCaseSensitive("Moscow"),
-                textCaseSensitive("State and City"), textCaseSensitive("Haryana Panipat")
-        );
-
-        $("#closeLargeModal").click();
+        step("Verify", () -> {
+            $(".table-responsive").shouldHave(
+                    text(firstName + " " + lastName),
+                    text(userEmail),
+                    text(gender),
+                    text(userNumber),
+                    text(day + " " + month + "," + year),
+                    text(subject),
+                    text(hobby),
+                    text("hdr009.jpg"),
+                    text(address),
+                    text(state + " " + city)
+            );
+        });
     }
 }
+
+

@@ -9,7 +9,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import helpers.Attach;
 
 
-
 public class TestBase {
     @BeforeAll
     static void setUp (){

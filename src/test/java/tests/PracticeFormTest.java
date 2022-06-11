@@ -3,7 +3,7 @@ package tests;
 
 
 import com.codeborne.selenide.Selenide;
-import org.junit.jupiter.api.DisplayName;
+
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -11,16 +11,16 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
+
 public class PracticeFormTest extends TestBase{
     @Test
-    @DisplayName("Successful fill registration test")
     void fillFormTest(){
 
         String firstName = "Name";
         String lastName = "Surname";
         String userEmail = "mail@mail.ru";
         String gender = "Female";
-        String userNumber = "123456";
+        String userNumber = "1234567899";
         String year = "1999";
         String month = "February";
         String day = "12";

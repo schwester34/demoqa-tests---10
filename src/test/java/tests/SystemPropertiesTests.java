@@ -12,7 +12,6 @@ public class SystemPropertiesTests {
         String browser = System.getProperty("browser", "chrome");
         System.out.println(browser);
     }
-
     @Test
     void someTest4() {
         CredentialsConfig credentialsConfig = ConfigFactory.create(CredentialsConfig.class);

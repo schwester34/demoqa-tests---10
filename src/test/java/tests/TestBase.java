@@ -22,7 +22,7 @@ public class TestBase {
 
         String selenoidURL = System.getProperty("selenoidURL");
         System.out.println(selenoidURL);
-        String selenoidConnectionString = String.format("https://%s:%s@%s/wd/hub&quot",
+        String selenoidConnectionString = String.format("https://%s:%s@%s/wd/hub;",
                 selenoidLogin,
                 selenoidPassword,
                 selenoidURL);
